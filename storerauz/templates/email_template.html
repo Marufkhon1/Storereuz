@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load django_bootstrap5 %}
+
+{% block title %}
+    <title>Send email</title>
+{% endblock %}
+{% block style %}
+<style>
+    .main {
+        display: flex;
+        justify-content: space-around;
+    }
+</style>
+{% endblock  %}
+
+
+{% block auth_content %}
+{% include 'navbar.html' %}
+<div class="main">
+    <div style="margin: 45px;" class="left">
+        {% include "form_snippets.html" with form=form %}
+    </div>
+    <div class="right">
+        <img src="{% static 'images/email.webp' %}" alt="" width="500px" height="570px">
+    </div>
+</div><br>
+<footer style="text-align: center;" class="bg-light text-center text-lg-start">
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2023 Copyright:
+      <a style="font-family: roboto; text-decoration: none; color: black;" class="text-dark" href="{% url 'home_page' %}">Storera<span style="color: green;">uz</span></a>
+      <br>
+      <a style="text-decoration: none; color: black;" class="text-dark" href="https://www.instagram.com/">Instagram</a><br>
+      <a style="text-decoration: none; color: black;" class="text-dark" href="https://www.youtube.com/">You Tube</a><br>
+      <a style="text-decoration: none; color: black;" class="text-dark" href="https://web.telegram.org/a/">Telegram</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+
+
+    
+{% endblock %}
+
+{% block script %}
+{% bootstrap_javascript %}
+<script>
+  setTimeout(() => {
+    const messages = document.querySelectorAll('#messages')
+    messages.forEach((msg) => {
+      msg.remove()
+    })
+  }, 5000)
+  
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+  })
+</script>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% comment %}Takes two arguments: 1. form (required) 2. btn_text (optional){% endcomment %}
+
+{% load static %}
+{% load django_bootstrap5 %}
+
+<form class="panel-body" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+
+  {% if form.errors %}
+    {% bootstrap_form_errors form %}
+  {% endif %}
+
+  {% bootstrap_form form %}
+
+  <button id="id_submit" type="submit" class="btn btn-outline-success">
+      Submit
+  </button>
+</form>
+
+

@@ -1,0 +1,45 @@
+
+
+{% block auth_content %}
+<h1>My Wishlist</h1>
+
+<ul>
+    {% for item in items %}
+        <li>{{ item.name }} <a href="{% url 'remove_from_wishlist' item.id %}">Remove</a></li>
+    {% endfor %}
+</ul>
+
+<form method="post" action="{% url 'wishlist' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add to Wishlist</button>
+</form>
+
+<!-- Add this button for each product -->
+{% if product %}
+    <form method="post" action="{% url 'add_to_wishlist' product.id %}">
+        {% csrf_token %}
+        <button type="submit">Add to Wishlist</button>
+    </form>
+{% endif %}
+{% endblock %}
+
+
+{% block script %}
+
+<script>
+  setTimeout(() => {
+    const messages = document.querySelectorAll('#messages')
+    messages.forEach((msg) => {
+      msg.remove()
+    })
+  }, 5000)
+  
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+  })
+</script>
+{% endblock %}
+
+{% bootstrap_javascript %}

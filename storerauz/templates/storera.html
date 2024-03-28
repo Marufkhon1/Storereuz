@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load django_bootstrap5 %}
+
+{% block link %}
+{% endblock  %}
+
+{% block style %}
+
+
+{% endblock  %}
+
+
+{% block auth_content %}
+
+<div >
+  {% include 'navbar.html' %}
+    <h1 style=" margin: 20px; margin-left: 150px;">ЧТО ТАКОЕ Storera?</h1>
+    <p style=" margin:20px;margin-left: 150px;">Storera — это решение для электронной коммерции на основе искусственного интеллекта, которое дает вам возможность создать интернет-магазин всего за 5 минут и сразу же начать <br> продавать.</p>
+    <img style="margin: 25px;" src="{% static 'images/ill.svg' %}" alt="">
+
+    <footer style="text-align: center;" class="bg-light text-center text-lg-start">
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+          © 2023 Copyright:
+          <a style="text-decoration: none; color: black;" class="text-dark" href="{% url 'home_page' %}">Storerauz</a>
+          <br>
+          <a style="text-decoration: none; color: black;" class="text-dark" href="https://www.instagram.com/">Instagram</a><br>
+          <a style="text-decoration: none; color: black;" class="text-dark" href="https://www.youtube.com/">You Tube</a><br>
+          <a style="text-decoration: none; color: black;" class="text-dark" href="https://web.telegram.org/a/">Telegram</a>
+        </div>
+        <!-- Copyright -->
+      </footer>
+</div>
+
+
+{% endblock  %}
+
+{% block script %}
+
+<script>
+  setTimeout(() => {
+    const messages = document.querySelectorAll('#messages')
+    messages.forEach((msg) => {
+      msg.remove()
+    })
+  }, 5000)
+  
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+  })
+</script>
+{% endblock %}
+
+{% bootstrap_javascript %}

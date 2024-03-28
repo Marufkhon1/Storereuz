@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load django_bootstrap5 %}
+{% load i18n %}
+
+{% block title %}
+  <title>{{ user.username }} </title>
+{% endblock %}
+
+{% block style %}
+<style>
+.main {
+  display: flex;
+  justify-content: space-around;
+  margin: 70px auto;
+  
+}
+
+</style>
+{% endblock  %}
+
+{% block content %}
+ 
+
+  <div class="main">
+    <div>
+      <h1 style="font-family: roboto;">{{ user.username }} </h1>
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+    
+        {% if u_form.errors %}
+          {% bootstrap_form_errors u_form %}
+        {% endif %}
+        {% if p_form.errors %}
+          {% bootstrap_form_errors p_form %}
+        {% endif %}
+    
+        {% bootstrap_form u_form %}
+        {% bootstrap_form p_form %}
+    
+        <button class="btn btn-success" type="submit">Update</button>
+      </form>
+    </div>
+    <div>
+      <img style="border-radius: 50%;" src="{% static 'images/profile.avif' %}" alt="" width="550px" height="600px">
+    </div>
+  </div>
+
+
+
+ 
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}

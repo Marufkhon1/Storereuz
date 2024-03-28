@@ -1,0 +1,100 @@
+{% load static %}
+{% load django_bootstrap5 %}
+
+{% block title %}
+  <title>AC Django Project</title>
+{% endblock %}
+
+{% bootstrap_css %}
+
+{% block link %}
+
+{% endblock %}
+
+{% block style %}
+
+{% endblock %}
+
+{% if user.is_authenticated %}
+
+<nav style="background-color: aliceblue" class="navbar navbar-expand-lg ">
+  <a class="navbar-brand" href="http://127.0.0.1:8000/" data-bs-toggle="tooltip" data-bs-placement="top" title="Storerauz">Storera<span style="color: green;">uz</span></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class=" float-right collapse navbar-collapse" id="navbarNavAltMarkup">
+  </div>
+  <div class="navbar-nav float-right" >
+    <a class="nav-item nav-link active" data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist" href="{% url 'view_cart' %}">Cart 🧺</a>
+    <a class="nav-item nav-link active" data-bs-toggle="tooltip" data-bs-placement="top" title="Home" href="{% url 'home_page' %}">Home </a>
+    <a class="nav-item nav-link active " href="{% url 'clothes_add' %}"  data-bs-toggle="tooltip" data-bs-placement="top" title="Add Products">Add Products</a>
+    <a class="nav-item nav-link active " href="{% url 'clothes_list' %}"  data-bs-toggle="tooltip" data-bs-placement="top" title="Your Products">Your Products</a>
+    <a class="nav-item nav-link active " href="{% url 'profile' %}" data-bs-toggle="tooltip" data-bs-placement="right" title="Profile">Profile</a>
+    <a class="nav-item nav-link active" href="{% url 'logout' %}"  data-bs-toggle="tooltip" data-bs-placement="right" title="Logout">Logout</a>
+  </div>
+</nav>
+
+<style>
+  .navbar-brand {
+   
+    margin-left: 50px;
+  }
+  .nav-item {
+    margin-left: 40px;
+  }
+  .navbar-nav:last-child {
+    margin-right: 50px;
+  }
+  
+</style>
+  <main id="logged-in-menu">
+    
+
+    <div>
+      {% comment %} <a id="wishlist" href="{% url 'wishlist_view' %}" data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">🧺</a> {% endcomment %}
+    </div>
+    <div>
+      <div id="messages">
+        {% bootstrap_messages %}
+      </div>
+
+      {% block content %}
+{% include 'navbar.html' %}
+      {% endblock %}
+
+      {% block script %}
+
+      {% endblock %}
+    </div>
+  </main>
+{% else %}
+  <div class="logged-out-navbar">
+    
+    {% comment %} <a style="float: left;" href="{% url 'home_page' %}">🏠</a> {% endcomment %}
+
+    {% comment %} <a href="/accounts/signup">Registration</a> {% endcomment %}
+    {% comment %} <a href="/users/login">Login</a> {% endcomment %}
+  </div>
+  <main id="logged-out-menu">
+    {% bootstrap_messages %}
+    {% block auth_content %}
+    {% include 'navbar.html' %}
+    {% include 'home.html' %}
+    {% endblock %}
+  </main>
+{% endif %}
+
+{% bootstrap_javascript %}
+<script>
+  setTimeout(() => {
+    const messages = document.querySelectorAll('#messages')
+    messages.forEach((msg) => {
+      msg.remove()
+    })
+  }, 5000)
+  
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+  })
+</script>

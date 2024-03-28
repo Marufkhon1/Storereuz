@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% load django_bootstrap5 %}
+{% load static %}
+
+{% block title %}
+  <title>Add Clothes</title>
+{% endblock %}
+
+{% block style %}
+<style>
+    .main {
+        display: flex;
+        justify-content: space-around;
+    }
+</style>
+{% endblock %}
+
+{% block link %}
+{% endblock %}
+
+{% block content %}
+    <h1 style="font-family: roboto;text-align: center;">Publish new Clothes</h1>
+    <div class="main">
+        <div>
+            {% include "form_snippets.html" with form=form %}
+        </div>
+        <div>
+            <img src="{% static 'images/clothes.webp' %}" alt="">
+        </div>
+        
+    </div>
+    
+
+{% endblock %}
+
+{% block script %}
+{% bootstrap_javascript %}
+<script>
+  setTimeout(() => {
+    const messages = document.querySelectorAll('#messages')
+    messages.forEach((msg) => {
+      msg.remove()
+    })
+  }, 5000)
+  
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+  })
+</script>
+{% endblock %}

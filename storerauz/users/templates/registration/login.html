@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% load account socialaccount %}
+
+{% block title %}
+  <title>Login</title>
+{% endblock %}
+
+{% block auth_content %}
+{% include 'navbar.html' %}
+  <div class="container">
+    <h1>Login</h1>
+
+    {% include "form_snippets.html" with form=form btn_text='Login' %}
+
+    <hr>
+    <div class="mb-5">
+        <small class="text-muted">
+            Do not have an account?  
+            <a href="{% url 'registration' %}">
+                Create an account
+            </a>
+        </small>
+    </div>
+    <div class="text-center">
+      <a class="btn btn-success" href="{% provider_login_url 'github' %}">
+          <i class="fab fa-github"></i>
+          GitHub
+      </a>
+      <a class="btn btn-danger" href="{% provider_login_url 'google' %}">
+          <i class="fab fa-google"></i>
+          Google
+      </a>
+  </div>
+  </div>
+  
+{% endblock %}
+
+{% block script %}
+
+<script>
+  setTimeout(() => {
+    const messages = document.querySelectorAll('#messages')
+    messages.forEach((msg) => {
+      msg.remove()
+    })
+  }, 5000)
+  
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+  })
+</script>
+{% endblock %}
+
+{% bootstrap_javascript %}

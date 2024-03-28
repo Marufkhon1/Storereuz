@@ -1,0 +1,311 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load django_bootstrap5 %}
+
+{% block title %}
+<title>
+  Storerauz
+</title>
+{% endblock  %}
+
+{% block link %}
+{% endblock  %}
+
+{% block style %}
+<style>
+  .main-container {
+    margin: 90px;
+    display: flex;
+    justify-content: space-around;
+    
+  }
+  
+  .left-div {
+    width: 50%;
+    padding: 20px;
+    background-color: #fff;
+  }
+  
+  .right-div {
+    background-color: #fff;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+  .right-div:hover .overlay-text {
+    opacity: 1;
+  }
+  .right-div > img {
+    transition: transform 0.3s ease-in-out; /* Add a smooth transition effect on transform */
+  }
+  .right-div > img : :hover {
+    transform: scale(1.2);
+  }
+  .overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease-in-out; /* Add a smooth transition effect on opacity */
+  }
+  
+  .button-container {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .button-1 {
+    width: 60%;
+    padding: 10px;
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 1s ease;
+  }
+  
+  .button-2 {
+    width: 30%;
+    padding: 10px;
+    background-color: #27ae60;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 1s ease;
+  }
+  .button-container button:hover {
+    background-color: rebeccapurple;
+  }
+  .middle-container {
+    margin: 90px;
+    display: flex;
+    justify-content: space-around;
+  }
+  .middle1-container {
+    margin: 90px;
+    display: flex;
+    justify-content: space-around;
+  }
+  .middle2-container {
+    margin: 90px;
+    display: flex;
+    justify-content: space-around;
+  }
+  .middle3-container {
+    margin: 90px;
+    display: flex;
+    justify-content: space-around;
+  }
+</style>
+
+
+{% endblock  %}
+
+
+{% block auth_content %}
+{% include 'navbar.html' %}
+
+
+<div class="main-container">
+  <div class="left-div">
+    <h1><b>КРАТЧАЙШИЙ ПУТЬ К КЛИЕНТАМ</b></h1> <br />
+    <br />
+    <p>Storera — это идеальное решение для создания интернет-магазина самым разумным образом, которое дает вам возможность сразу же начать продавать товары в Интернете.</p>
+
+    <p>Интернет-магазин, также известный как магазин электронной коммерции, — это веб-сайт или приложение, которое позволяет предприятиям продавать товары или услуги через Интернет. Он предоставляет клиентам виртуальную платформу для просмотра, выбора и покупки товаров в Интернете. Вот ключевые составляющие и аспекты интернет-магазина:</p>
+    <div class="button-container">
+      <button class="button-1"><a style="text-decoration: none; color: white;" href="{% url 'registration' %}">Бесплатная пробная версия</a></button>
+      <button class="button-2"> <a style="text-decoration: none; color: white;" href="{% url 'send_email_view' %}">Помощь</a></button>
+    </div>
+  </div>
+  <div class="right-div">
+    <img style="width: 500px;
+        height: 400px;
+        border: 2px solid #3498db;
+        border-radius: 10px; 
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)" src="{% static 'images/web.jpg' %}" alt="" width="300px" height="300px" />
+    <div style="color: black; font-family: roboto;" class="overlay-text">
+      Storera<span style="color: green;">uz</span>
+    </div>
+  </div>
+</div>
+<div class="middle-container">
+  <div class="left-div">
+    <br /><br /><br /><br />
+    <h1><b>Регистрация</b></h1> <br />
+    <br />
+    <p>Добавлять продукты в свой интернет-магазин очень просто: вам понадобятся только название продукта, фото, небольшое описание и цена.</p>
+    <div class="button-container">
+      <button class="button-1"><a style="text-decoration: none; color: white;" href="{% url 'registration' %}">Бесплатная пробная версия</a></button>
+      <button class="button-2"><a style="text-decoration: none; color: white;" href="{% url 'send_email_view' %}">Помощь</a></button>
+    </div>
+  </div>
+  <div class="right-div">
+    <img style="" src="{% static 'images/second.svg' %}" alt="" width="500px" height="550px" />
+  </div>
+</div>
+<div class="middle1-container">
+  <div class="left-div">
+    <br /> <br /> <br /><br />
+    <h1><b>Выберите свой дизайн</b></h1> <br />
+    <br />
+    <p>Дизайн — один из важнейших аспектов интернет-магазина, который требует огромных денежных и временных затрат. Наши веб-дизайнеры и разработчики уже позаботились об этом, и вы можете просто выбрать дизайн всего за несколько минут.</p>
+    <div class="button-container">
+      <button class="button-1"><a style="text-decoration: none; color: white;" href="{% url 'registration' %}">Бесплатная пробная версия</a></button>
+      <button class="button-2"><a style="text-decoration: none; color: white;" href="{% url 'send_email_view' %}">Помощь</a></button>
+    </div>
+  </div>
+  <div class="right-div">
+    <img src="{% static 'images/design.jpg' %}" alt="" width="500px" height="550x" />
+  </div>
+</div>
+<div class="middle2-container">
+  <div class="left-div">
+    <br /> <br />
+    <h1><b>Добавьте ваши продукты</b></h1> <br />
+    <br />
+    <p>Добавлять продукты в свой интернет-магазин очень просто: вам понадобятся только название продукта, фото, небольшое описание и цена.</p>
+    <div class="button-container">
+      <button class="button-1"><a style="text-decoration: none; color: white;" href="{% url 'registration' %}">Бесплатная пробная версия</a></button>
+      <button class="button-2"><a style="text-decoration: none; color: white;" href="{% url 'send_email_view' %}">Помощь</a></button>
+    </div>
+  </div>
+  <div class="right-div">
+    <img src="{% static 'images/adding.jpg' %}" alt="" width="500px" height="550x" />
+  </div>
+</div>
+<div class="middle3-container">
+  <div class="left-div">
+    <br /> <br />
+    <h1><b>Управляйте своим <br /> магазином</b></h1> <br />
+    <br />
+    <p>Интернет-магазин готов! Дизайн уже выбран, продукты добавлены, cпособы оплаты интегрированы. Наши разработчики позаботились о SEO и ваш магазин появится на лучших позициях в поисковых системах. Спланируйте свою маркетинговую стратегию и начните продавать онлайн. Удачи!</p>
+    <div class="button-container">
+      <button class="button-1"><a style="text-decoration: none; color: white;" href="{% url 'registration' %}">Бесплатная пробная версия</a></button>
+      <button class="button-2"><a style="text-decoration: none; color: white;" href="{% url 'send_email_view' %}">Помощь</a></button>
+    </div>
+  </div>
+  <div class="right-div">
+    <img src="{% static 'images/run.jpg' %}" alt="" width="500px" height="550x" />
+  </div>
+</div>
+
+<footer style="text-align: center;" class="bg-light text-center text-lg-start">
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2023 Copyright:
+    <a style="text-decoration: none; color: black;" class="text-dark" href="{% url 'home_page' %}">Storerauz</a>
+    <br>
+    <a style="text-decoration: none; color: black;" class="text-dark" href="https://www.instagram.com/">Instagram</a><br>
+    <a style="text-decoration: none; color: black;" class="text-dark" href="https://www.youtube.com/">You Tube</a><br>
+    <a style="text-decoration: none; color: black;" class="text-dark" href="https://web.telegram.org/a/">Telegram</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+
+{% endblock  %}
+
+{% block content%}
+
+
+
+<main>
+  <div class="main-container">
+    <div class="left-div">
+      <h1><b>SHORTEST PATH TO CUSTOMERS</b></h1> <br />
+      <br />
+      <p>Storera — это идеальное решение для создания интернет-магазина самым разумным образом, которое дает вам возможность сразу же начать продавать товары в Интернете.</p>
+      <div class="button-container">
+        <button class="button-1"><a style="text-decoration: none; color: white;" href="{% url 'clothes_add' %}">Cтарт</a></button>
+        <button class="button-2"><a style="text-decoration: none; color: white;" href="{% url 'clothes_list' %}">Your Products</a></button>
+      </div>
+      
+    </div>
+    <div class="right-div">
+      <img style="width: 500px;
+          height: 400px;
+          border: 2px solid #3498db;
+          border-radius: 10px; 
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)" src="{% static 'images/carl.jpg' %}" alt="" width="300px" height="300px" />
+      <div style="color: black; font-family: roboto;" class="overlay-text">
+        Storera<span style="color: green;">uz</span>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+
+  <div class="container marketing">
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+      <div class="col-lg-4">
+        <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="{% static 'images/jek.jpg' %}" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em"></text></svg>
+
+        <h2>Джек Ма</h2>
+        <p>Выступает за то, чтобы сотрудники его компаний работали с 9 утра до 9 вечера 6 дней в неделю, то есть суммарно 72 часа в неделю, утверждая, что невозможно добиться успеха без дополнительных усилий</p>
+       
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="{% static 'images/ilon.jpg' %}" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em"></text></svg>
+
+        <h2>Илон Маск</h2>
+        <p>В мае 2002 года Маск основал свою третью компанию — SpaceX. Она является частным разработчиком серии ракет-носителей и коммерческим оператором космических систем.</p>
+        
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="{% static 'images/jef.jpeg' %}" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em"></text></svg>
+
+        <h2>Джефф Безос</h2>
+        <p>Джефф Безос впервые попал в рейтинг миллиардеров Форбс в 1999 году с капиталом 10,1 миллиарда долларов. В течение десяти лет его состояние не превышало этой отметки, но в 2010 году начался устойчивый рост, который в 2018 году поднял его на первую строчку рейтинга Форбс с капиталом 112 млрд долл.</p>
+       
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+
+
+    <!-- START THE FEATURETTES -->
+
+    
+
+    <hr class="featurette-divider">
+
+    <!-- /END THE FEATURETTES -->
+
+  </div><!-- /.container -->
+  <footer style="text-align: center;" class="bg-light text-center text-lg-start">
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2023 Copyright:
+      <a style="text-decoration: none; color: black;" class="text-dark" href="{% url 'home_page' %}">Storerauz</a>
+      <br>
+      <a style="text-decoration: none; color: black;" class="text-dark" href="https://www.instagram.com/">Instagram</a><br>
+      <a style="text-decoration: none; color: black;" class="text-dark" href="https://www.youtube.com/">You Tube</a><br>
+      <a style="text-decoration: none; color: black;" class="text-dark" href="https://web.telegram.org/a/">Telegram</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+
+  <!-- FOOTER -->
+
+</main>
+{% endblock  %}
+
+{% block script %}
+
+{% endblock %}
+
+

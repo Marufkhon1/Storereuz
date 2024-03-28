@@ -1,0 +1,239 @@
+
+{% load static %}
+{% load django_bootstrap5 %}
+
+{% block title %}
+<title>Centered Navigation</title>
+{% endblock  %}
+{% bootstrap_css %}
+{% block link %}
+<link href="path/to/bootstrap.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:ital,wght@1,500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-fzj+Qvb4+IlnA1oHXjH6PoVXz5iPr/4KD6LWxI+UvzI+2JF8dz9L78bVRZIIfYiG" crossorigin="anonymous">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+{% endblock  %}
+
+    
+{% block style %}
+ <style>
+
+      *{
+        transition: 1s ease;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Arial', sans-serif;
+        background-color: #fff;
+        
+       
+      }
+      
+      nav {
+        overflow: hidden;
+        text-align: center;
+        display: flex;
+        gap: 15px;
+        color: black;
+
+       
+       
+
+      
+        
+        padding: 25px;
+      }
+      
+      .full-width-navbar--item a {
+        display: inline-block;
+        color: #fff;
+        text-align: center;
+        color: black;
+        padding: 14px 16px;
+        text-decoration: none;
+       
+      }
+      .full-width-navbar--item a:focus {
+        outline: 2px solid #27ae60;
+        /* Add other styles as needed */
+      }
+      
+      .main-container {
+        margin: 90px;
+        display: flex;
+        justify-content: space-around;
+        
+      }
+      
+      .left-div {
+        width: 50%;
+        padding: 20px;
+        background-color: #fff;
+      }
+      
+      .right-div {
+        background-color: #fff;
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+      }
+      .right-div:hover .overlay-text {
+        opacity: 1;
+      }
+      .right-div > img {
+        transition: transform 0.3s ease-in-out; /* Add a smooth transition effect on transform */
+      }
+      .right-div > img : :hover {
+        transform: scale(1.2);
+      }
+      .overlay-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+        opacity: 0; /* Initially hidden */
+        transition: opacity 0.3s ease-in-out; /* Add a smooth transition effect on opacity */
+      }
+      
+      .button-container {
+        display: flex;
+        gap: 10px;
+      }
+      
+      .button-1 {
+        width: 60%;
+        padding: 10px;
+        background-color: #3498db;
+        color: #fff;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 1s ease;
+      }
+      
+      .button-2 {
+        width: 30%;
+        padding: 10px;
+        background-color: #27ae60;
+        color: #fff;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 1s ease;
+      }
+      .button-container button:hover {
+        background-color: rebeccapurple;
+      }
+      .middle-container {
+        margin: 90px;
+        display: flex;
+        justify-content: space-around;
+      }
+      .middle1-container {
+        margin: 90px;
+        display: flex;
+        justify-content: space-around;
+      }
+      .middle2-container {
+        margin: 90px;
+        display: flex;
+        justify-content: space-around;
+      }
+      .middle3-container {
+        margin: 90px;
+        display: flex;
+        justify-content: space-around;
+      }
+
+
+
+
+
+
+
+
+      
+       
+     
+      
+      
+    </style>
+{% endblock  %}
+
+{% block auth_content %}
+<div style="background-color: aliceblue;"  class="justify-content-between align-items-center d-none d-lg-flex">
+  <div class="menu-logo">
+    <a style=" margin: 40px; text-decoration: none; color: black; font-family: roboto;" href="/">Storera<span style="color: green;">uz</span></a>
+  </div>
+  <nav>
+    <div class="full-width-navbar--item">
+      <a href="{% url 'home_page' %}">Главная</a>
+    </div>
+    <div class="full-width-navbar--item">
+      <a href="{% url 'storera' %}">ЧТО ТАКОЕ Storera?</a>
+    </div>
+    <div class="full-width-navbar--item">
+      <a href="{% url 'pricing' %}">ЦЕНЫ</a>
+    </div>
+    <div class="full-width-navbar--item">
+      <a href="{% url 'about' %}">БЛОГ</a>
+    </div>
+    <div class="full-width-navbar--item">
+      <a href="{% url 'send_email_view' %}">КОНТАКТЫ</a>
+    </div>
+    <div class="full-width-navbar--item d-none">
+      <a href="/vacancy"></a>
+    </div>
+  </nav>
+  <div style="background-color: aliceblue;" class="right-side">
+    <a style="text-decoration: none; color: black; " href="{% url 'login' %}">Login</a>
+    <a style="text-decoration: none; color: black;margin: 40px;" href="{% url 'registration' %}">Registration</a>
+  </div>
+</div>
+{% endblock  %}
+
+
+
+    
+   
+
+    {% bootstrap_javascript %}
+    {% block script %}
+    <script src="path/to/jquery.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="path/to/bootstrap.min.js"></script>
+
+    <script> setTimeout(() => {
+      const messages = document.querySelectorAll('#messages')
+      messages.forEach((msg) => {
+        msg.remove()
+      })
+    }, 5000)
+    
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl)
+    }) 
+  </script>
+    
+
+
+
+
+
+    {% endblock  %}
+
+    <!-- Remove the container if you want to extend the Footer to full width. -->
+    
+   
+
+    <!-- Your content goes here -->

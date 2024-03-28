@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% load static %}
+
+{% block title %}
+  <title>Update Products</title>
+{% endblock %}
+
+{% block style %}
+<style>
+  .main {
+    display: flex;
+    justify-content: space-around;
+    margin: 40px;
+  }
+</style>
+{% endblock %}
+
+{% block link %}
+{% endblock %}
+
+{% block content %}
+    <h1 style="font-family: roboto; text-align: center;">Update Product</h1>
+    <div class="main">
+    <div>
+      {% include "form_snippets.html" with form=form %}
+    </div>
+    <div>
+      <img src="{% static 'images/update.jpg' %}" alt="" width="550px" height="600px">
+    </div>
+    </div>
+    
+
+{% endblock %}
+
+{% block script %}
+{% endblock %}
