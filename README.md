@@ -1,2 +1,2 @@
 # Storereuz
-I have created storerauz ,it is easy to sell your products easily and buy easily
+I have created storerauz ,it is crucial in selling your products easily and purchasing easily
